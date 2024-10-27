@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./data:/data/postgres
+    ports:
+      - "3333:3333"
