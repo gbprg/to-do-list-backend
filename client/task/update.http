@@ -1,0 +1,8 @@
+PUT http://localhost:3333/api/tasks/394c450e-852f-4f68-995e-8c65e0fcf42a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjOTMzZmQ5Yi02OGMyLTQ5ODYtODIxOC1jNjc1Zjc1ZWM0N2QiLCJpYXQiOjE3MzAyMDgxNjYsImV4cCI6MTczMDIxMTc2Nn0.zPRI9MaKOZdQNiDmo8154xI0K1ktVTOaw518TBMhzUM
+Content-Type: application/json
+
+{
+  "title": "Tarefa atualizada",
+  "description": "Descrição atualizada"
+}

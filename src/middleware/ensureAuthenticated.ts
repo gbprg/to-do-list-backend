@@ -1,5 +1,5 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { verify } from 'jsonwebtoken';
+import { FastifyReply, FastifyRequest } from "fastify";
+import jwt from "jsonwebtoken";
 
 export function ensureAuthenticated(
   request: FastifyRequest,
@@ -10,14 +10,15 @@ export function ensureAuthenticated(
 
   if (!authToken) {
     return reply.status(401).send({
-      message: 'Unauthorized',
+      message: "Unauthorized",
     });
   }
 
-  const [, token] = authToken.split(' ');
+  const [, token] = authToken.split(" ");
 
   try {
-    verify(token, process.env.JWT_SECRET as string);
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET as string) as { userId: string };
+    (request as unknown as Record<string, unknown>).userId = decodedToken.userId;
     return next();
   } catch (error) {
     return reply.status(401).send({
@@ -25,5 +26,4 @@ export function ensureAuthenticated(
       error: error instanceof Error ? error.message : 'Unknown error',
     });
   }
-
 }
