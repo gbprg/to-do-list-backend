@@ -2,7 +2,7 @@ import { client } from '../../prisma/client';
 import bcrypt from 'bcrypt';
 
 interface ICreateUserRequest {
-  name: string;
+  name: string
   email: string;
   password: string;
 }
